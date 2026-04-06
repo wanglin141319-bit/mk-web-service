@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专业建站服务 - 打造您的专属品牌网站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部 */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 服务套餐 */
+        .packages {
+            padding: 60px 0;
+        }
+
+        .packages h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: #2d3748;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .package-card.popular {
+            border: 3px solid #667eea;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #667eea;
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .package-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .package-price span {
+            font-size: 1rem;
+            color: #718096;
+            font-weight: 400;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .package-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #edf2f7;
+            color: #4a5568;
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-features li:before {
+            content: "✓";
+            color: #48bb78;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .package-features li.disabled:before {
+            content: "✗";
+            color: #e53e3e;
+        }
+
+        .package-features li.disabled {
+            opacity: 0.5;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        /* 服务内容 */
+        .services {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: #2d3748;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .service-item p {
+            color: #718096;
+            line-height: 1.8;
+        }
+
+        /* 优势 */
+        .advantages {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        }
+
+        .advantages h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: #2d3748;
+        }
+
+        .advantages-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .advantage-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .advantage-item:last-child {
+            border-bottom: none;
+        }
+
+        .advantage-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .advantage-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+
+        .advantage-content p {
+            color: #718096;
+        }
+
+        /* 联系方式 */
+        .contact {
+            padding: 60px 0;
+            background: #2d3748;
+            color: white;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-item p {
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background: #1a202c;
+            color: #718096;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .packages h2,
+            .services h2,
+            .advantages h2,
+            .contact h2 {
+                font-size: 1.5rem;
+            }
+
+            .package-card {
+                padding: 30px 20px;
+            }
+
+            .package-price {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 60px 0 40px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .packages-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <h1>专业建站服务</h1>
+            <p>打造高品质、高性能的品牌网站<br>助力企业数字化转型</p>
+        </div>
+    </header>
+
+    <!-- 服务套餐 -->
+    <section class="packages">
+        <div class="container">
+            <h2>选择适合您的套餐</h2>
+            <div class="packages-grid">
+                <!-- 基础套餐 -->
+                <div class="package-card">
+                    <h3 class="package-name">基础套餐</h3>
+                    <div class="package-price">¥3,999</div>
+                    <ul class="package-features">
+                        <li>响应式单页网站</li>
+                        <li>最多 5 个页面</li>
+                        <li>基础 SEO 优化</li>
+                        <li>域名注册（1年）</li>
+                        <li>主机托管（1年）</li>
+                        <li class="disabled">定制化设计</li>
+                        <li class="disabled">后台管理系统</li>
+                        <li class="disabled">数据库开发</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">立即咨询</a>
+                </div>
+
+                <!-- 专业套餐 -->
+                <div class="package-card popular">
+                    <div class="popular-badge">热门</div>
+                    <h3 class="package-name">专业套餐</h3>
+                    <div class="package-price">¥8,999</div>
+                    <ul class="package-features">
+                        <li>定制化设计</li>
+                        <li>最多 10 个页面</li>
+                        <li>高级 SEO 优化</li>
+                        <li>域名注册（1年）</li>
+                        <li>主机托管（1年）</li>
+                        <li>后台管理系统</li>
+                        <li>基础数据库开发</li>
+                        <li class="disabled">电商功能</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">立即咨询</a>
+                </div>
+
+                <!-- 企业套餐 -->
+                <div class="package-card">
+                    <h3 class="package-name">企业套餐</h3>
+                    <div class="package-price">¥15,999</div>
+                    <ul class="package-features">
+                        <li>全定制开发</li>
+                        <li>不限页面数量</li>
+                        <li>企业级 SEO 策略</li>
+                        <li>域名注册（2年）</li>
+                        <li>主机托管（2年）</li>
+                        <li>后台管理系统</li>
+                        <li>高级数据库开发</li>
+                        <li>电商功能（可选）</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">立即咨询</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务内容 -->
+    <section class="services">
+        <div class="container">
+            <h2>我们的服务</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">🎨</div>
+                    <h3>UI/UX 设计</h3>
+                    <p>专业设计师团队，打造符合品牌调性的视觉界面，提升用户体验</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">💻</div>
+                    <h3>前端开发</h3>
+                    <p>使用最新技术栈，确保网站流畅、快速、兼容所有主流浏览器</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">⚙️</div>
+                    <h3>后端开发</h3>
+                    <p>构建强大的后台系统，支持数据管理、用户管理等功能</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📱</div>
+                    <h3>响应式设计</h3>
+                    <p>完美适配电脑、平板、手机等各种设备，随时随地访问</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔍</div>
+                    <h3>SEO 优化</h3>
+                    <p>提升搜索引擎排名，让更多潜在客户找到您的网站</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🛡️</div>
+                    <h3>安全防护</h3>
+                    <p>SSL 证书、数据备份、防攻击策略，保障网站安全稳定</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 优势 -->
+    <section class="advantages">
+        <div class="container">
+            <h2>为什么选择我们</h2>
+            <div class="advantages-list">
+                <div class="advantage-item">
+                    <div class="advantage-number">1</div>
+                    <div class="advantage-content">
+                        <h3>专业团队</h3>
+                        <p>10 年+ 行业经验，服务过 500+ 企业客户，口碑有保障</p>
+                    </div>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-number">2</div>
+                    <div class="advantage-content">
+                        <h3>透明报价</h3>
+                        <p>明码标价，无隐藏费用，让您清楚每一分钱的去向</p>
+                    </div>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-number">3</div>
+                    <div class="advantage-content">
+                        <h3>快速交付</h3>
+                        <p>高效项目流程，基础套餐 7 天交付，专业套餐 15 天交付</p>
+                    </div>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-number">4</div>
+                    <div class="advantage-content">
+                        <h3>售后保障</h3>
+                        <p>提供 1 年免费技术支持，7×24 小时响应，让您无后顾之忧</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>联系我们</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📞 电话咨询</h3>
+                    <p>400-888-8888</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📧 邮箱联系</h3>
+                    <p>contact@example.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>💬 微信咨询</h3>
+                    <p>微信号：webmaster123</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📍 公司地址</h3>
+                    <p>北京市朝阳区某某大厦 8 层</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>© 2026 专业建站服务 版权所有</p>
+        </div>
+    </footer>
+</body>
+</html>
