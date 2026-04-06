@@ -49,9 +49,7 @@ file:///C:/Users/asus/WorkBuddy/20260406152059/mk-web-service.html
 
 ## 📞 联系方式
 
-- 电话：400-888-8888
-- 邮箱：contact@mk.com
-- 微信：mk2026
+- 邮箱：wanglin141319@gmail.com
 
 ---
 
